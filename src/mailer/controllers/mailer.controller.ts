@@ -9,6 +9,6 @@ export class MailerController {
 
         @EventPattern('send.email')
         async sendOTP(payload: MailParameter) {
-                await this.mailerService.send(payload);
+                return await this.mailerService.send(payload);
         }
 }

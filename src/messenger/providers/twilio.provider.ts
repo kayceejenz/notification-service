@@ -9,12 +9,11 @@ export class TwilioProvider implements IMessengerProvider {
         twilio: twilio.Twilio;
 
         constructor(private readonly config: ConfigService) {
-                const accountSid = this.config.get<string>(
-                        'messenger.twilio.accountSid',
-                );
-                const authToken = this.config.get<string>(
-                        'messenger.twilio.authToken',
-                );
+                const { accountSid, authToken } = this.config.get<{
+                        accountSid: string;
+                        authToken: string;
+                }>('messenger.twilio');
+
                 this.twilio = twilio(accountSid, authToken, {
                         autoRetry: true,
                         maxRetries: 3,
