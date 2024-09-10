@@ -11,7 +11,7 @@ import {
 export class MessengerService {
         constructor(
                 private readonly config: ConfigService,
-                private readonly twilioProvider: TwilioProvider
+                private readonly twilioProvider: TwilioProvider,
         ) {}
 
         private getMessengerProvider(provider: string): IMessengerProvider {
@@ -20,7 +20,7 @@ export class MessengerService {
                                 return this.twilioProvider;
                         default:
                                 throw new Error(
-                                        `[Unsupported]: Messenger provider: ${provider} not supported`
+                                        `[Unsupported]: Messenger provider: ${provider} not supported`,
                                 );
                 }
         }

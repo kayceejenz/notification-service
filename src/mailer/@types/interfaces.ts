@@ -9,9 +9,9 @@ export interface MailParameter {
         };
         to: string;
         subject: string;
-        text?: string;
-        template_id?: string;
-        dynamic_template_data?: any;
+        text: string;
+        templateId?: string;
+        dynamicTemplateData?: any;
 }
 
 export enum MailProvider {

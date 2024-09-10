@@ -11,7 +11,7 @@ import {
 export class MailerService {
         constructor(
                 private sendgridProvider: SendgridProvider,
-                private config: ConfigService
+                private config: ConfigService,
         ) {}
 
         private getMailProvider(provider: string): IMailerProvider {
@@ -20,11 +20,11 @@ export class MailerService {
                                 return this.sendgridProvider;
                         case MailProvider.MAILGUN:
                                 throw new Error(
-                                        `[Unimplemented]: Mail provider: ${provider} not implemented`
+                                        `[Unimplemented]: Mail provider: ${provider} not implemented`,
                                 );
                         default:
                                 throw new Error(
-                                        `[Unsupported]: Mail provider: ${provider} not supported`
+                                        `[Unsupported]: Mail provider: ${provider} not supported`,
                                 );
                 }
         }
@@ -35,10 +35,10 @@ export class MailerService {
                 const mail: MailParameter = {
                         from: {
                                 email: this.config.get<string>(
-                                        'mailer.sender.email'
+                                        'mailer.sender.email',
                                 ),
                                 name: this.config.get<string>(
-                                        'mailer.sender.name'
+                                        'mailer.sender.name',
                                 ),
                         },
                         ...parameters,

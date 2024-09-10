@@ -1,6 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as twilio from 'twilio';
-import { _throwOrContinue } from 'src/utils/helper';
 import { ConfigService } from '@nestjs/config';
 import { IMessengerProvider, SMSParameter } from '../@types/interfaces';
 
@@ -11,10 +10,10 @@ export class TwilioProvider implements IMessengerProvider {
 
         constructor(private readonly config: ConfigService) {
                 const accountSid = this.config.get<string>(
-                        'messenger.twilio.accountSid'
+                        'messenger.twilio.accountSid',
                 );
                 const authToken = this.config.get<string>(
-                        'messenger.twilio.authToken'
+                        'messenger.twilio.authToken',
                 );
                 this.twilio = twilio(accountSid, authToken, {
                         autoRetry: true,

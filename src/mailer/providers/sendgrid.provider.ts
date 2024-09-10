@@ -12,17 +12,17 @@ export class SendgridProvider implements IMailerProvider {
         constructor(private config: ConfigService) {
                 this.sendgrid = sendgrid;
                 this.sendgrid.setApiKey(
-                        this.config.get<string>('mailer.sendgrid.apiKey')
+                        this.config.get<string>('mailer.sendgrid.apiKey'),
                 );
         }
 
         async send(mail: MailParameter, retries = 2): Promise<boolean> {
                 try {
-                        //@ts-ignore
                         const sent = await this.sendgrid.send(mail);
-                        return sent ? true : false;
+                        return !!sent;
                 } catch (error) {
                         this.logger.error('Failed to send email', error);
+
                         _throwOrContinue(error, retries);
                         await this.send(mail, retries - 1);
                 }

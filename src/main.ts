@@ -5,9 +5,8 @@ import { INestMicroservice } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-        let app: INestMicroservice = await NestFactory.createMicroservice(
-                AppModule
-        );
+        let app: INestMicroservice =
+                await NestFactory.createMicroservice(AppModule);
         const config = app.get<ConfigService>(ConfigService);
 
         const options = {
