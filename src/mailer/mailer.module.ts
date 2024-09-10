@@ -4,7 +4,7 @@ import { MailerController } from './controllers/mailer.controller';
 import { SendgridProvider } from './providers/sendgrid.provider';
 
 @Module({
-  providers: [MailerService, SendgridProvider],
-  controllers: [MailerController],
+        providers: [MailerService, SendgridProvider],
+        controllers: [MailerController],
 })
 export class MailerModule {}
